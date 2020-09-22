@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<script>
+    function validador(evt) {
+        var theEvent = evt || window.event;
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode( key );
+        var regex = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ .]+$/;
+        if( !regex.test(key) ) {
+            theEvent.returnValue = false;
+            if(theEvent.preventDefault) theEvent.preventDefault();
+        }
+    }
+</script>
+
+<body>
+    <div class="container-table">
+        <div class="content">
+            <div id="formulario" class="formulario">
+                <div>
+                    <form action="createUser.php" method="post">
+                        <div id="title">
+                            <h1 id="title-form">Cadastro de novo Usuário</h1>
+                            <a class="close"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="container-form">
+                            <div class="input_div">
+                                <input class="input_form" type="text" name="name" placeholder="Digite seu numero" onkeypress="return validador() " >
+                            </div>
+                            <div class="input_div">
+                                <input class="input_form" type="text" name="email" placeholder="Digite seu Email"
+                                    value="" required>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
